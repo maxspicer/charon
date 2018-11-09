@@ -84,8 +84,10 @@ public class InMemoryUserManager implements UserManager {
                                          String sortOrder, String domainName, Map<String, Boolean> requiredAttributes)
             throws CharonException, NotImplementedException, BadRequestException {
         if (sortBy != null || sortOrder != null) {
-            throw new NotImplementedException("Sorting is not supported");
-        }  else if (startIndex != 1) {
+            logger.warn("Silently ignoring Sorting request!");
+        }
+
+        if (startIndex != 1) {
             throw new NotImplementedException("Pagination is not supported");
         } else if (rootNode != null) {
             throw new NotImplementedException("Filtering is not supported");
@@ -187,8 +189,10 @@ public class InMemoryUserManager implements UserManager {
                                           String domainName, Map<String, Boolean> requiredAttributes)
             throws CharonException, NotImplementedException, BadRequestException {
         if (sortBy != null || sortOrder != null) {
-            throw new NotImplementedException("Sorting is not supported");
-        }  else if (startIndex != 1) {
+            logger.warn("Silently ignoring Sorting request!");
+        }
+
+        if (startIndex != 1) {
             throw new NotImplementedException("Pagination is not supported");
         } else if (rootNode != null) {
             throw new NotImplementedException("Filtering is not supported");
